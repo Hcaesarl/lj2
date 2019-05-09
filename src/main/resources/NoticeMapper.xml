@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.NoticeDAO">
+
+    <insert id="save">
+        insert into Notice(title,userId) value (#{arg0},#{arg1});
+    </insert>
+
+    <select id="searchByUser" resultType="Notice">
+        select * from Notice where userId=#{arg0};
+    </select>
+
+    <update id="delete">
+        delete from Notice where title=#{arg0} and userId=#{arg1};
+    </update>
+
+</mapper>

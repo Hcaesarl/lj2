@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.NewsDAO"> 
+    <select id="getNewsById"  resultType="News">
+        select
+        * from news where `id`=#{id}
+    </select>
+    <delete id="delete">
+		delete from news where id=#{id}
+	</delete>
+    <select id="getNewsCount" resultType="int">
+        select count(id) from news
+    </select>
+    <select id="getAllNews" resultType="News">
+        select * from news
+    </select>
+    <insert id="insert" parameterType="News">
+        insert into
+        news(uid,title,thumb,description,bodytext,created,click,support,tags)
+        values(#{uid},#{title},#{thumb},#{description},#{bodytext},#{created},#{click},#{support},#{tags});
+    </insert>
+        
+    <update id="update" parameterType="News">
+		update news set uid=#{uid},title=#{title},thumb=#{thumb},description=#{description},bodytext=#{bodytext},created=#{created},click=#{click},support=#{support},tags=#{tags} where id=#{id}
+	</update>
+        </mapper>

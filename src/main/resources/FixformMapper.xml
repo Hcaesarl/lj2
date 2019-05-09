@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.FixformDAO"> 
+    <select id="getFixformById"  resultType="Fixform">
+        select
+        * from fixform where `id`=#{id}
+    </select>
+    <delete id="delete">
+		delete from fixform where id=#{id}
+	</delete>
+    <select id="getFixformCount" resultType="int">
+        select count(id) from fixform
+    </select>
+    <select id="getAllFixform" resultType="Fixform">
+        select * from fixform
+    </select>
+    <insert id="insert" parameterType="Fixform">
+        insert into
+        fixform(address,tel,username,description,fixdesc,created,fixtime,uid,state)
+        values(#{address},#{tel},#{username},#{description},#{fixdesc},#{created},#{fixtime},#{uid},#{state});
+    </insert>
+        
+    <update id="update" parameterType="Fixform">
+		update fixform set address=#{address},tel=#{tel},username=#{username},description=#{description},fixdesc=#{fixdesc},created=#{created},fixtime=#{fixtime},uid=#{uid},state=#{state} where id=#{id}
+	</update>
+        </mapper>

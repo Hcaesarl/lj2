@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.CkDAO"> 
+    <select id="getCkById"  resultType="Ck">
+        select
+        * from ck where `id`=#{id}
+    </select>
+    <delete id="delete">
+		delete from ck where id=#{id}
+	</delete>
+    <select id="getCkCount" resultType="int">
+        select count(id) from ck
+    </select>
+    <select id="getAllCk" resultType="Ck">
+        select * from ck
+    </select>
+    <insert id="insert" parameterType="Ck">
+        insert into
+        ck(title,description,created)
+        values(#{title},#{description},#{created});
+    </insert>
+        
+    <update id="update" parameterType="Ck">
+		update ck set title=#{title},description=#{description},created=#{created} where id=#{id}
+	</update>
+
+    <select id="searchByStores" resultType="Ck">
+        select * from ck c right join stores s on c.id=s.sid where s.pid=#{arg0};
+    </select>
+
+        </mapper>

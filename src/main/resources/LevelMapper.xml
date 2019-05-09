@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.LevelDAO">
+    <insert id="addLevel">
+        insert into level(num,userId,createDate,remark) value (#{arg0},#{arg1},#{arg3},#{arg2});
+
+    </insert>
+
+    <select id="searchByUser" resultType="Level">
+        select * from level where userid=#{arg0};
+
+    </select>
+</mapper>

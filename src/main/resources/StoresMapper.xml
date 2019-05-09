@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.StoresDAO">
+    <select id="getStoresById" resultType="Stores">
+        select
+        * from stores where `id`=#{id}
+    </select>
+    <delete id="delete">
+		delete from stores where id=#{id}
+	</delete>
+    <select id="getStoresCount" resultType="int">
+        select count(id) from stores
+    </select>
+    <select id="getAllStores" resultType="Stores">
+        select * from stores
+    </select>
+    <select id="getStores" resultType="Stores">
+        select * from stores where pid=#{pid}
+    </select>
+    <insert id="insert" parameterType="Stores">
+        insert into
+        stores(pid,sid,num)
+        values(#{pid},#{sid},#{num});
+    </insert>
+
+    <update id="update" parameterType="Stores">
+		update stores set pid=#{pid},sid=#{sid},num=#{num} where id=#{id}
+	</update>
+
+    <delete id="deleteByCkId">
+        delete from stores where pid=#{arg0} and sid=#{arg1}
+    </delete>
+
+    <update id="deleteByCk">
+        delete from stores where sid=#{arg0};
+    </update>
+
+    
+</mapper>
